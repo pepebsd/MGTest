@@ -21,9 +21,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-//@ManagedBean(name = "utilidadesXSSFWorkbook")
-//@ViewScoped
-
 class Main_utilidadesXML {
 	
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
@@ -47,43 +44,9 @@ class Main_utilidadesXML {
        		HSSFCell cell;
        		FileOutputStream ficheroOpenOfficeCalc = new FileOutputStream(System.getProperty("user.home")
     				+ "/nombreHojaOpenOffice2.ods");
-       		
-       		
-       		
-       		
-       	/*	System.out.print ("INSERT INTO ANIMALES (crotal, fechaInicio, fechaFin, explotacionPertenencia, explotacionUbicacion,"
-       				+ "fechaNacimiento, explotacionNacimiento, sexo, raza, crotalMadre, causaAlta, fechaAlta, "
-       				+ "procedencia, CodigoLocalEntrada, CodigoRemoEntrada, causaBaja, destino, CodigoLocalSalida,"
-       				+ "CodigoRemoSalida) VALUES (\'");
-    		*/
-    		/* ========= */
-    		
-       		
-       		
-       		
-       		/**
-       		try(FileOutputStream fos=new FileOutputStream("D:\\fichero_bin.ddr")){
-       		 
-                String texto="Esto es una prueba para ficheros binariosssss";
-     
-                //Copiamos el texto en un array de bytes
-                byte codigos[]=texto.getBytes();
-     
-                fos.write(codigos);
-                
-                
-                final OutputStream os = new FileOutputStream("/tmp/out");
-				final PrintStream printStream = new PrintStream(os);
-				printStream.print("String");
-				printStream.close();
-     
-               /* ================ */
-       		
-       		
-    		
     	    DocumentBuilderFactory fábricaCreadorDocumento = DocumentBuilderFactory.newInstance();
     	    DocumentBuilder creadorDocumento = fábricaCreadorDocumento.newDocumentBuilder();
-    	    Document documento = creadorDocumento.parse("LibroRegistroAnimales.xml");
+    	    Document documento = creadorDocumento.parse("MGTestMGTestLibroRegistroAnimales.xml");
     	    //Obtener el elemento raíz del documento
     	    Element raiz = documento.getDocumentElement();
 
@@ -133,20 +96,11 @@ class Main_utilidadesXML {
     	                		celda.setCellValue(datoContenido.getNodeValue().toString());
     	                		valorAInsertar=datoContenido.getNodeValue().toString();
     	                		stringScriptSql = stringScriptSql + "\'" + valorAInsertar + "\',";    	                		
-    	                	//	System.out.print("\'" + valorAInsertar + "\',");
     	                	}
-    	                	//System.out.print("PDM1");
     	                }
-    	                //System.out.print("PDM2");
     	            }
-    	          //  System.out.print("PDM3");
     	            
     	        }
-    	        //stringScriptSql.substring(0,stringScriptSql.lastIndexOf(','));
-    	        
-    	        //Se deja un salto de línea de separación entre cada animal
-    	        //System.out.println();
-    	       
     	    }
     	    System.out.print(stringScriptSql);
     	    try {
@@ -176,9 +130,10 @@ class Main_utilidadesXML {
     
     
     public static void generaSql()throws ParserConfigurationException, SAXException, IOException{
+    	
     	FileOutputStream scriptSql=new FileOutputStream("scriptSqlSalida.txt");
 		String stringScriptSql = "";
-		PrintStream psScritpSql = new PrintStream(scriptSql);
+		PrintStream psScritpSql = new PrintStream(scriptSql);    	
 		stringScriptSql = "INSERT INTO ANIMALES (id, crotal, fechaInicio, fechaFin, explotacionPertenencia, explotacionUbicacion,"
    				+ "fechaNacimiento, explotacionNacimiento, sexo, raza, crotalMadre, causaAlta, fechaAlta, "
    				+ "procedencia, CodigoLocalEntrada, CodigoRemoEntrada, fechaBaja, causaBaja, destino, CodigoLocalSalida,"
@@ -187,7 +142,7 @@ class Main_utilidadesXML {
     		
     	    DocumentBuilderFactory fábricaCreadorDocumento = DocumentBuilderFactory.newInstance();
     	    DocumentBuilder creadorDocumento = fábricaCreadorDocumento.newDocumentBuilder();
-    	    Document documento = creadorDocumento.parse("LibroRegistroAnimales.xml");
+    	    Document documento = creadorDocumento.parse("MGTest/LibroRegistroAnimales.xml");
     	    //Obtener el elemento raíz del documento
     	    Element raiz = documento.getDocumentElement();
 
@@ -238,17 +193,9 @@ class Main_utilidadesXML {
     	                	//	System.out.println("i==0 " + datosAnimal.item(indiceColumna).getNextSibling().getNodeName());
     	                	//}else{
     	                		valorAInsertar=datoContenido.getNodeValue().toString();
-    	                		stringScriptSql = stringScriptSql + "\'" + valorAInsertar + "\',";    	                		
-    	                	//}
-    	                  	                	
-    	                	//System.out.println("datoContenido: " + elemento2.toString());
-    	            		/*valorAInsertar="pdm";
-	                		stringScriptSql = stringScriptSql + "\'" + valorAInsertar + "\',";*/
-    	                	
+    	                		stringScriptSql = stringScriptSql + "\'" + valorAInsertar + "\',";	
     	                }
-    	               
     	            }
-    	            
     	        }
     	        stringScriptSql = stringScriptSql.substring(0,(stringScriptSql.lastIndexOf(",")));
         	    stringScriptSql = stringScriptSql + "),(DEFAULT,"; 
