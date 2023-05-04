@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
 //@ManagedBean(name = "utilidadesXSSFWorkbook")
 //@ViewScoped
 
-class Main_procesaXML {
+class Main_utilidadesXML {
 	
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
     	
