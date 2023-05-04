@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- Ubicación del JAR JDBC del gestor de Base de datos a usar, en este caso MySQL  -->
+  <classPathEntry location="C:/Users/jduran5/.m2/repository/org/postgresql/postgresql/42.3.6/postgresql-42.3.6.jar" />
+
+  <!--  Generaremos para MyBatis versión 3 -->
+  <context id="Test" targetRuntime="MyBatis3">
+    
+    <!-- No generamos los comentarios -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="true"/>
+    </commentGenerator>
+    
+      <!--  Parámetros de conexión a la bd 
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://localhost:3306/Test"
+        userId="root"
+        password="root">
+    </jdbcConnection>
+    
+-->    
+ 	<jdbcConnection 
+ 	   		connectionURL="jdbc:postgresql://127.0.0.1:5433/Animales"
+            driverClass="org.postgresql.Driver" password="pwdpdm"
+            userId="postgres">
+ 	
+    </jdbcConnection>
+	    
+    <javaModelGenerator 
+
+     targetPackage="es.tragsatec.pssa.model" targetProject="MGTest/src/main/java">
+      <!--  <property name="enableSubPackages" value="true" /> -->
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="es.tragsatec.pssa.model"  targetProject="MGTest/src/main/java">
+      <!--  <property name="enableSubPackages" value="true" /> -->
+    </sqlMapGenerator>
+    
+    
+	<!-- También podríamos indicar el tipo ANNOTATEDMAPPER -->
+    <javaClientGenerator type="XMLMAPPER" 
+    	targetPackage="es.tragsatec.pssa.mapper"  targetProject="MGTest">
+      <!--  <property name="enableSubPackages" value="true" /> -->
+    </javaClientGenerator>
+  <!--   
+    <table schema="public" tableName="Usuarios" delimitIdentifiers="true">
+    </table>
+  -->
+  <!--  
+    <table schema="public" tableName="animales" delimitIdentifiers="true"  domainObjectName="Usuarios" > 
+      <property name="useActualColumnNames" value="true"/>
+      <generatedKey column="ID" sqlStatement="SELECT LAST_INSERT_ID()" identity="true" />
+    </table>
+     -->
+    <table schema="public" tableName="animales" delimitIdentifiers="true">
+        </table>
+  </context>
+</generatorConfiguration>
