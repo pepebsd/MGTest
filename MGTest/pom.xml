@@ -1,14 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>MGTest</groupId>
   <artifactId>MGTest</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>MGTest Maven Webapp</name>
+<packaging>war</packaging>  
+  
+  
+  
+  
+  
 <url>http://maven.apache.org</url>
 <properties>
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--  Definimos la version de Spring en una constante dentro del archivo pom  -->
-<spring.version>3.2.2.RELEASE</spring.version>
+	<!--  Definimos la version de Spring en una constante dentro del archivo pom  -->
+	<spring.version>3.2.2.RELEASE</spring.version>
+	<javax_servlet.version>3.0</javax_servlet.version>
+	<jstl.version>1.2</jstl.version>
 </properties>
 <dependencies>
 <dependency>
@@ -102,7 +111,37 @@
     <version>42.3.6</version>
 </dependency>
 
+<!-- PDM Dependencias añadidas del pom de PSSA relativas a JSF -->
+<dependency>
+<groupId>javax</groupId>
+<artifactId>javaee-api</artifactId>
+<version>7.0</version>
+</dependency>
+<dependency>
+<groupId>javax.servlet</groupId>
+<artifactId>javax.servlet-api</artifactId>
+<version>3.1.0</version>
+<scope>provided</scope>
+</dependency>
+<dependency>
+<groupId>com.sun.faces</groupId>
+<artifactId>jsf-api</artifactId>
+<version>2.2.9</version>
+</dependency>
 
+<dependency>
+<groupId>com.sun.faces</groupId>
+<artifactId>jsf-impl</artifactId>
+<version>2.0.4-b09</version>
+</dependency>
+<dependency>
+<groupId>org.omnifaces</groupId>
+<artifactId>omnifaces</artifactId>
+<version>1.14.1</version>
+</dependency>
+
+
+<!--FIN PDM Dependencias añadidas del pom de PSSA relativas a JSF -->
 
 
 <dependency>

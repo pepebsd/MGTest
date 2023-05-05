@@ -32,23 +32,18 @@
 	    
     <javaModelGenerator 
 
-     targetPackage="es.tragsatec.pssa.model" 
-     targetProject="MGTest/src/main/java">
+     targetPackage="es.tragsatec.pssa.model" targetProject="MGTest/src/main/java">
       <!--  <property name="enableSubPackages" value="true" /> -->
     </javaModelGenerator>
 
-    <sqlMapGenerator 
-    targetPackage="es.tragsatec.pssa.model"  
-    targetProject="MGTest/src/main/java">
+    <sqlMapGenerator targetPackage="es.tragsatec.pssa.model"  targetProject="MGTest/src/main/java">
       <!--  <property name="enableSubPackages" value="true" /> -->
     </sqlMapGenerator>
     
     
 	<!-- También podríamos indicar el tipo ANNOTATEDMAPPER -->
-    <javaClientGenerator 
-    type="XMLMAPPER" 
-    targetPackage="es.tragsatec.pssa.mapper"  
-    targetProject="MGTest/src/main/java">
+    <javaClientGenerator type="XMLMAPPER" 
+    	targetPackage="es.tragsatec.pssa.mapper"  targetProject="MGTest">
       <!--  <property name="enableSubPackages" value="true" /> -->
     </javaClientGenerator>
   <!--   
