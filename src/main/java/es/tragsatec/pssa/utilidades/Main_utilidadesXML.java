@@ -1,6 +1,9 @@
 package es.tragsatec.pssa.utilidades;
 
 import java.io.FileOutputStream;
+
+import es.tragsatec.pssa.model.Animales;
+import es.tragsatec.pssa.model.AnimalesExample;
 import java.io.IOException;
 import java.io.PrintStream;
 
@@ -230,5 +233,5 @@ class Main_utilidadesXML {
 		}
 
 	}
-
+	
 }
