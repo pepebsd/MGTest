@@ -463,4 +463,466 @@
       codigoremosalida = #{codigoremosalida,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <resultMap id="BaseResultMap" type="es.tragsatec.pssa.model.Animales">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="crotal" jdbcType="VARCHAR" property="crotal" />
+    <result column="fechainicio" jdbcType="VARCHAR" property="fechainicio" />
+    <result column="fechafin" jdbcType="VARCHAR" property="fechafin" />
+    <result column="explotacionpertenencia" jdbcType="VARCHAR" property="explotacionpertenencia" />
+    <result column="explotacionubicacion" jdbcType="VARCHAR" property="explotacionubicacion" />
+    <result column="fechanacimiento" jdbcType="VARCHAR" property="fechanacimiento" />
+    <result column="explotacionnacimiento" jdbcType="VARCHAR" property="explotacionnacimiento" />
+    <result column="sexo" jdbcType="VARCHAR" property="sexo" />
+    <result column="raza" jdbcType="VARCHAR" property="raza" />
+    <result column="crotalmadre" jdbcType="VARCHAR" property="crotalmadre" />
+    <result column="causaalta" jdbcType="VARCHAR" property="causaalta" />
+    <result column="fechaalta" jdbcType="VARCHAR" property="fechaalta" />
+    <result column="procedencia" jdbcType="VARCHAR" property="procedencia" />
+    <result column="codigolocalentrada" jdbcType="VARCHAR" property="codigolocalentrada" />
+    <result column="codigoremoentrada" jdbcType="VARCHAR" property="codigoremoentrada" />
+    <result column="causabaja" jdbcType="VARCHAR" property="causabaja" />
+    <result column="fechabaja" jdbcType="VARCHAR" property="fechabaja" />
+    <result column="destino" jdbcType="VARCHAR" property="destino" />
+    <result column="codigolocalsalida" jdbcType="VARCHAR" property="codigolocalsalida" />
+    <result column="codigoremosalida" jdbcType="VARCHAR" property="codigoremosalida" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, crotal, fechainicio, fechafin, explotacionpertenencia, explotacionubicacion, 
+    fechanacimiento, explotacionnacimiento, sexo, raza, crotalmadre, causaalta, fechaalta, 
+    procedencia, codigolocalentrada, codigoremoentrada, causabaja, fechabaja, destino, 
+    codigolocalsalida, codigoremosalida
+  </sql>
+  <select id="selectByExample" parameterType="es.tragsatec.pssa.model.AnimalesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from "public"."animales"
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from "public"."animales"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from "public"."animales"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="es.tragsatec.pssa.model.AnimalesExample">
+    delete from "public"."animales"
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="es.tragsatec.pssa.model.Animales">
+    insert into "public"."animales" (id, crotal, fechainicio, 
+      fechafin, explotacionpertenencia, explotacionubicacion, 
+      fechanacimiento, explotacionnacimiento, 
+      sexo, raza, crotalmadre, 
+      causaalta, fechaalta, procedencia, 
+      codigolocalentrada, codigoremoentrada, 
+      causabaja, fechabaja, destino, 
+      codigolocalsalida, codigoremosalida)
+    values (#{id,jdbcType=INTEGER}, #{crotal,jdbcType=VARCHAR}, #{fechainicio,jdbcType=VARCHAR}, 
+      #{fechafin,jdbcType=VARCHAR}, #{explotacionpertenencia,jdbcType=VARCHAR}, #{explotacionubicacion,jdbcType=VARCHAR}, 
+      #{fechanacimiento,jdbcType=VARCHAR}, #{explotacionnacimiento,jdbcType=VARCHAR}, 
+      #{sexo,jdbcType=VARCHAR}, #{raza,jdbcType=VARCHAR}, #{crotalmadre,jdbcType=VARCHAR}, 
+      #{causaalta,jdbcType=VARCHAR}, #{fechaalta,jdbcType=VARCHAR}, #{procedencia,jdbcType=VARCHAR}, 
+      #{codigolocalentrada,jdbcType=VARCHAR}, #{codigoremoentrada,jdbcType=VARCHAR}, 
+      #{causabaja,jdbcType=VARCHAR}, #{fechabaja,jdbcType=VARCHAR}, #{destino,jdbcType=VARCHAR}, 
+      #{codigolocalsalida,jdbcType=VARCHAR}, #{codigoremosalida,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="es.tragsatec.pssa.model.Animales">
+    insert into "public"."animales"
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="crotal != null">
+        crotal,
+      </if>
+      <if test="fechainicio != null">
+        fechainicio,
+      </if>
+      <if test="fechafin != null">
+        fechafin,
+      </if>
+      <if test="explotacionpertenencia != null">
+        explotacionpertenencia,
+      </if>
+      <if test="explotacionubicacion != null">
+        explotacionubicacion,
+      </if>
+      <if test="fechanacimiento != null">
+        fechanacimiento,
+      </if>
+      <if test="explotacionnacimiento != null">
+        explotacionnacimiento,
+      </if>
+      <if test="sexo != null">
+        sexo,
+      </if>
+      <if test="raza != null">
+        raza,
+      </if>
+      <if test="crotalmadre != null">
+        crotalmadre,
+      </if>
+      <if test="causaalta != null">
+        causaalta,
+      </if>
+      <if test="fechaalta != null">
+        fechaalta,
+      </if>
+      <if test="procedencia != null">
+        procedencia,
+      </if>
+      <if test="codigolocalentrada != null">
+        codigolocalentrada,
+      </if>
+      <if test="codigoremoentrada != null">
+        codigoremoentrada,
+      </if>
+      <if test="causabaja != null">
+        causabaja,
+      </if>
+      <if test="fechabaja != null">
+        fechabaja,
+      </if>
+      <if test="destino != null">
+        destino,
+      </if>
+      <if test="codigolocalsalida != null">
+        codigolocalsalida,
+      </if>
+      <if test="codigoremosalida != null">
+        codigoremosalida,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="crotal != null">
+        #{crotal,jdbcType=VARCHAR},
+      </if>
+      <if test="fechainicio != null">
+        #{fechainicio,jdbcType=VARCHAR},
+      </if>
+      <if test="fechafin != null">
+        #{fechafin,jdbcType=VARCHAR},
+      </if>
+      <if test="explotacionpertenencia != null">
+        #{explotacionpertenencia,jdbcType=VARCHAR},
+      </if>
+      <if test="explotacionubicacion != null">
+        #{explotacionubicacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fechanacimiento != null">
+        #{fechanacimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="explotacionnacimiento != null">
+        #{explotacionnacimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="sexo != null">
+        #{sexo,jdbcType=VARCHAR},
+      </if>
+      <if test="raza != null">
+        #{raza,jdbcType=VARCHAR},
+      </if>
+      <if test="crotalmadre != null">
+        #{crotalmadre,jdbcType=VARCHAR},
+      </if>
+      <if test="causaalta != null">
+        #{causaalta,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaalta != null">
+        #{fechaalta,jdbcType=VARCHAR},
+      </if>
+      <if test="procedencia != null">
+        #{procedencia,jdbcType=VARCHAR},
+      </if>
+      <if test="codigolocalentrada != null">
+        #{codigolocalentrada,jdbcType=VARCHAR},
+      </if>
+      <if test="codigoremoentrada != null">
+        #{codigoremoentrada,jdbcType=VARCHAR},
+      </if>
+      <if test="causabaja != null">
+        #{causabaja,jdbcType=VARCHAR},
+      </if>
+      <if test="fechabaja != null">
+        #{fechabaja,jdbcType=VARCHAR},
+      </if>
+      <if test="destino != null">
+        #{destino,jdbcType=VARCHAR},
+      </if>
+      <if test="codigolocalsalida != null">
+        #{codigolocalsalida,jdbcType=VARCHAR},
+      </if>
+      <if test="codigoremosalida != null">
+        #{codigoremosalida,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="es.tragsatec.pssa.model.AnimalesExample" resultType="java.lang.Long">
+    select count(*) from "public"."animales"
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update "public"."animales"
+    <set>
+      <if test="row.id != null">
+        id = #{row.id,jdbcType=INTEGER},
+      </if>
+      <if test="row.crotal != null">
+        crotal = #{row.crotal,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fechainicio != null">
+        fechainicio = #{row.fechainicio,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fechafin != null">
+        fechafin = #{row.fechafin,jdbcType=VARCHAR},
+      </if>
+      <if test="row.explotacionpertenencia != null">
+        explotacionpertenencia = #{row.explotacionpertenencia,jdbcType=VARCHAR},
+      </if>
+      <if test="row.explotacionubicacion != null">
+        explotacionubicacion = #{row.explotacionubicacion,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fechanacimiento != null">
+        fechanacimiento = #{row.fechanacimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="row.explotacionnacimiento != null">
+        explotacionnacimiento = #{row.explotacionnacimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="row.sexo != null">
+        sexo = #{row.sexo,jdbcType=VARCHAR},
+      </if>
+      <if test="row.raza != null">
+        raza = #{row.raza,jdbcType=VARCHAR},
+      </if>
+      <if test="row.crotalmadre != null">
+        crotalmadre = #{row.crotalmadre,jdbcType=VARCHAR},
+      </if>
+      <if test="row.causaalta != null">
+        causaalta = #{row.causaalta,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fechaalta != null">
+        fechaalta = #{row.fechaalta,jdbcType=VARCHAR},
+      </if>
+      <if test="row.procedencia != null">
+        procedencia = #{row.procedencia,jdbcType=VARCHAR},
+      </if>
+      <if test="row.codigolocalentrada != null">
+        codigolocalentrada = #{row.codigolocalentrada,jdbcType=VARCHAR},
+      </if>
+      <if test="row.codigoremoentrada != null">
+        codigoremoentrada = #{row.codigoremoentrada,jdbcType=VARCHAR},
+      </if>
+      <if test="row.causabaja != null">
+        causabaja = #{row.causabaja,jdbcType=VARCHAR},
+      </if>
+      <if test="row.fechabaja != null">
+        fechabaja = #{row.fechabaja,jdbcType=VARCHAR},
+      </if>
+      <if test="row.destino != null">
+        destino = #{row.destino,jdbcType=VARCHAR},
+      </if>
+      <if test="row.codigolocalsalida != null">
+        codigolocalsalida = #{row.codigolocalsalida,jdbcType=VARCHAR},
+      </if>
+      <if test="row.codigoremosalida != null">
+        codigoremosalida = #{row.codigoremosalida,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update "public"."animales"
+    set id = #{row.id,jdbcType=INTEGER},
+      crotal = #{row.crotal,jdbcType=VARCHAR},
+      fechainicio = #{row.fechainicio,jdbcType=VARCHAR},
+      fechafin = #{row.fechafin,jdbcType=VARCHAR},
+      explotacionpertenencia = #{row.explotacionpertenencia,jdbcType=VARCHAR},
+      explotacionubicacion = #{row.explotacionubicacion,jdbcType=VARCHAR},
+      fechanacimiento = #{row.fechanacimiento,jdbcType=VARCHAR},
+      explotacionnacimiento = #{row.explotacionnacimiento,jdbcType=VARCHAR},
+      sexo = #{row.sexo,jdbcType=VARCHAR},
+      raza = #{row.raza,jdbcType=VARCHAR},
+      crotalmadre = #{row.crotalmadre,jdbcType=VARCHAR},
+      causaalta = #{row.causaalta,jdbcType=VARCHAR},
+      fechaalta = #{row.fechaalta,jdbcType=VARCHAR},
+      procedencia = #{row.procedencia,jdbcType=VARCHAR},
+      codigolocalentrada = #{row.codigolocalentrada,jdbcType=VARCHAR},
+      codigoremoentrada = #{row.codigoremoentrada,jdbcType=VARCHAR},
+      causabaja = #{row.causabaja,jdbcType=VARCHAR},
+      fechabaja = #{row.fechabaja,jdbcType=VARCHAR},
+      destino = #{row.destino,jdbcType=VARCHAR},
+      codigolocalsalida = #{row.codigolocalsalida,jdbcType=VARCHAR},
+      codigoremosalida = #{row.codigoremosalida,jdbcType=VARCHAR}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="es.tragsatec.pssa.model.Animales">
+    update "public"."animales"
+    <set>
+      <if test="crotal != null">
+        crotal = #{crotal,jdbcType=VARCHAR},
+      </if>
+      <if test="fechainicio != null">
+        fechainicio = #{fechainicio,jdbcType=VARCHAR},
+      </if>
+      <if test="fechafin != null">
+        fechafin = #{fechafin,jdbcType=VARCHAR},
+      </if>
+      <if test="explotacionpertenencia != null">
+        explotacionpertenencia = #{explotacionpertenencia,jdbcType=VARCHAR},
+      </if>
+      <if test="explotacionubicacion != null">
+        explotacionubicacion = #{explotacionubicacion,jdbcType=VARCHAR},
+      </if>
+      <if test="fechanacimiento != null">
+        fechanacimiento = #{fechanacimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="explotacionnacimiento != null">
+        explotacionnacimiento = #{explotacionnacimiento,jdbcType=VARCHAR},
+      </if>
+      <if test="sexo != null">
+        sexo = #{sexo,jdbcType=VARCHAR},
+      </if>
+      <if test="raza != null">
+        raza = #{raza,jdbcType=VARCHAR},
+      </if>
+      <if test="crotalmadre != null">
+        crotalmadre = #{crotalmadre,jdbcType=VARCHAR},
+      </if>
+      <if test="causaalta != null">
+        causaalta = #{causaalta,jdbcType=VARCHAR},
+      </if>
+      <if test="fechaalta != null">
+        fechaalta = #{fechaalta,jdbcType=VARCHAR},
+      </if>
+      <if test="procedencia != null">
+        procedencia = #{procedencia,jdbcType=VARCHAR},
+      </if>
+      <if test="codigolocalentrada != null">
+        codigolocalentrada = #{codigolocalentrada,jdbcType=VARCHAR},
+      </if>
+      <if test="codigoremoentrada != null">
+        codigoremoentrada = #{codigoremoentrada,jdbcType=VARCHAR},
+      </if>
+      <if test="causabaja != null">
+        causabaja = #{causabaja,jdbcType=VARCHAR},
+      </if>
+      <if test="fechabaja != null">
+        fechabaja = #{fechabaja,jdbcType=VARCHAR},
+      </if>
+      <if test="destino != null">
+        destino = #{destino,jdbcType=VARCHAR},
+      </if>
+      <if test="codigolocalsalida != null">
+        codigolocalsalida = #{codigolocalsalida,jdbcType=VARCHAR},
+      </if>
+      <if test="codigoremosalida != null">
+        codigoremosalida = #{codigoremosalida,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="es.tragsatec.pssa.model.Animales">
+    update "public"."animales"
+    set crotal = #{crotal,jdbcType=VARCHAR},
+      fechainicio = #{fechainicio,jdbcType=VARCHAR},
+      fechafin = #{fechafin,jdbcType=VARCHAR},
+      explotacionpertenencia = #{explotacionpertenencia,jdbcType=VARCHAR},
+      explotacionubicacion = #{explotacionubicacion,jdbcType=VARCHAR},
+      fechanacimiento = #{fechanacimiento,jdbcType=VARCHAR},
+      explotacionnacimiento = #{explotacionnacimiento,jdbcType=VARCHAR},
+      sexo = #{sexo,jdbcType=VARCHAR},
+      raza = #{raza,jdbcType=VARCHAR},
+      crotalmadre = #{crotalmadre,jdbcType=VARCHAR},
+      causaalta = #{causaalta,jdbcType=VARCHAR},
+      fechaalta = #{fechaalta,jdbcType=VARCHAR},
+      procedencia = #{procedencia,jdbcType=VARCHAR},
+      codigolocalentrada = #{codigolocalentrada,jdbcType=VARCHAR},
+      codigoremoentrada = #{codigoremoentrada,jdbcType=VARCHAR},
+      causabaja = #{causabaja,jdbcType=VARCHAR},
+      fechabaja = #{fechabaja,jdbcType=VARCHAR},
+      destino = #{destino,jdbcType=VARCHAR},
+      codigolocalsalida = #{codigolocalsalida,jdbcType=VARCHAR},
+      codigoremosalida = #{codigoremosalida,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>
