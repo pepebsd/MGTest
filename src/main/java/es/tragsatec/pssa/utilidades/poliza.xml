@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<polizas orderid="889923" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="poliza.xsd">
+<!--   <orderperson>John Smith</orderperson>  -->
+<faseLiquidacion>
+<plan>2020</plan>
+<!--  entero 4 digitos  -->
+<numLiquidacion>1234</numLiquidacion>
+<!--  entero 1 a 4 digitos  -->
+<tipoSeguro>A</tipoSeguro>
+<!--  Alfanumerico 1 digito [A] -> Agricola  -->
+<fechaLiquidacion>2022-02-02</fechaLiquidacion>
+<!--  Fecha ISO  -->
+</faseLiquidacion>
+<tomador>
+<nifTomador>06997121P</nifTomador>
+<refColectivo>121</refColectivo>
+</tomador>
+<tomador>
+<nifTomador>06997122P</nifTomador>
+<refColectivo>122</refColectivo>
+</tomador>
+<tomador>
+<nifTomador>06997123P</nifTomador>
+<refColectivo>123</refColectivo>
+</tomador>
+<tomador>
+<nifTomador>06997124P</nifTomador>
+<refColectivo>124</refColectivo>
+</tomador>
+<tomador>
+<nifTomador>06997125P</nifTomador>
+<refColectivo>125</refColectivo>
+</tomador>
+<tomador>
+<nifTomador>06997126P</nifTomador>
+<refColectivo>126</refColectivo>
+</tomador>
+<colectivo>
+<refColectivo>121</refColectivo>
+<digitoControlColectivo>1</digitoControlColectivo>
+<linea>41</linea>
+<codEntidadAseguradora>145</codEntidadAseguradora>
+</colectivo>
+<colectivo>
+<refColectivo>122</refColectivo>
+<digitoControlColectivo>2</digitoControlColectivo>
+<linea>42</linea>
+<codEntidadAseguradora>245</codEntidadAseguradora>
+</colectivo>
+<colectivo>
+<refColectivo>123</refColectivo>
+<digitoControlColectivo>3</digitoControlColectivo>
+<linea>43</linea>
+<codEntidadAseguradora>345</codEntidadAseguradora>
+</colectivo>
+</polizas>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+<!--  definicion de elementos simples -->
+
+
+    <xs:element name="plan"  type="planType"/>
+    <xs:element name="numLiquidacion" type="numLiquidacionType"/>
+    <xs:element name="tipoSeguro" type="tipoSeguroType"/>
+    <xs:element name="fechaLiquidacion" type="fechaLiquidacionType"/>
+    <xs:element name="nifTomador" type="stringtype"/>
+    
+    <xs:element name="refColectivo" type="stringtype"/>
+    <xs:element name="digitoControlColectivo" type="stringtype"/>
+    <xs:element name="linea" type="stringtype"/>
+    <xs:element name="codEntidadAseguradora" type="stringtype"/>
+    
+    
+    
+    
+
+  <xs:element name="polizas"> 
+
+<!--  definicion de elementos complejos -->
+<xs:element name="faseLiquidacion"><!--    type="xs:faseLiquidacionType"/> -->
+  <xs:complexType>
+  <xs:sequence>
+    <xs:element ref="plan"/>
+    <xs:element ref="numLiquidacion"/>
+    <xs:element ref="tipoSeguro"/>
+    <xs:element ref="fechaLiquidacion"/>
+    <xs:element ref="tomador"/>
+    </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="tomador">
+  <xs:complexType>
+  <xs:sequence>
+    <xs:element ref="nifTomador"/>
+    <xs:element ref="colectivo"/>
+    </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+<xs:element name="colectivo">
+  <xs:complexType>
+  <xs:sequence>
+    <xs:element ref="refColectivo"/>
+    <xs:element ref="digitoControlColectivo"/>
+    <xs:element ref="linea"/>
+    <xs:element ref="codEntidadAseguradora"/>
+    </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+
+
+
+<!-- definicion de tipos simples con validacion -->
+<xs:simpleType name="stringtype">
+  <xs:restriction base="xs:string"/>
+</xs:simpleType>
+
+<xs:simpleType name="inttype">
+  <xs:restriction base="xs:positiveInteger"/>
+</xs:simpleType>
+
+<xs:simpleType name="dectype">
+  <xs:restriction base="xs:decimal"/>
+</xs:simpleType>
+
+<xs:simpleType name="polizaId">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="[0-9]{4}"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="polizaIdType">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="[0-9]{6}"/>
+  </xs:restriction>
+</xs:simpleType>
+
+
+
+<!-- tipos de datos de faseLiquidacionType-->
+<xs:simpleType name="planType">
+  <xs:restriction base="xs:positiveInteger">
+    <xs:pattern value="[0-9]{4}"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="numLiquidacionType">
+  <xs:restriction base="xs:positiveInteger">
+    <xs:pattern value="[0-9]{4}"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="tipoSeguroType">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="[A-Z]{1}"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="fechaLiquidacionType">
+  <xs:restriction base="xs:date">
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="tomadorType">
+  <xs:sequence>
+    <xs:element name="nifTomador" type="nifTomadorType"/> <!--  9digitos, la prim num, X, L o M,
+    													despues entre 0 y 7 digitos
+    													el ultimo caracter es letra mayuscula -->
+ 	<xs:element name="nombreTomador" type="stringtype"/>
+
+    </xs:sequence>
+    </xs:complexType>
+
+<!--   <xs:attribute name="polizaId" type="polizaIdType" use="required"/> -->
+<xs:simpleType name="nifTomadorType">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="[0-9,A-Z]{9}"/>
+  </xs:restriction>
+</xs:simpleType>
+
+
+
+</xs:schema>
