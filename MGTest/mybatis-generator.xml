@@ -23,23 +23,40 @@
     </jdbcConnection>
     
 -->    
+<!--
+<jdbcConnection 
+ 	   		connectionURL="jdbc:postgresql://127.0.0.1:5432/Animales"
+            driverClass="org.postgresql.Driver" password="pwdpostgres"
+            userId="postgres">
+ 	
+    </jdbcConnection>
+-->
+
+
+<jdbcConnection 
+ 	   		connectionURL="jdbc:postgresql://127.0.0.1:5432/Animales"
+            driverClass="org.postgresql.Driver" password="pwdpostgres"
+            userId="postgres">
+ 	
+    </jdbcConnection>
+<!--  
  	<jdbcConnection 
  	   		connectionURL="jdbc:postgresql://127.0.0.1:5433/Animales"
             driverClass="org.postgresql.Driver" password="pwdpdm"
             userId="postgres">
  	
     </jdbcConnection>
-	    
+	  -->  
     <javaModelGenerator 
 
-     targetPackage="es.tragsatec.pssa.model" 
-     targetProject="MGTest/src/main/java">
+     targetPackage="es.tragsatec.pssa.utilidades" 
+     targetProject="MGTest/src/main/java/es/tragsatec/pssa/utilidades">
       <!--  <property name="enableSubPackages" value="true" /> -->
     </javaModelGenerator>
 
     <sqlMapGenerator 
-    targetPackage="es.tragsatec.pssa.model"  
-    targetProject="MGTest/src/main/java">
+    targetPackage="es.tragsatec.pssa.utilidades"  
+    targetProject="MGTest/src/main/java/es/tragsatec/pssa/utilidades">
       <!--  <property name="enableSubPackages" value="true" /> -->
     </sqlMapGenerator>
     
@@ -47,8 +64,8 @@
 	<!-- También podríamos indicar el tipo ANNOTATEDMAPPER -->
     <javaClientGenerator 
     type="XMLMAPPER" 
-    targetPackage="es.tragsatec.pssa.mapper"  
-    targetProject="MGTest/src/main/java">
+    targetPackage="es.tragsatec.pssa.utilidades"  
+    targetProject="MGTest/src/main/java/es/tragsatec/pssa/utilidades">
       <!--  <property name="enableSubPackages" value="true" /> -->
     </javaClientGenerator>
   <!--   
